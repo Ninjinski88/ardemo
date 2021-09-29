@@ -23,7 +23,7 @@ function staticLoadPlaces() {
     //location of the object
     return [
         {
-            name: 'Pokèmon',
+            name: 'Sunny Hill bird',
             location: objectPostion
         },
     ];
@@ -117,7 +117,7 @@ function renderPlaces(places) {
             setModel(models[newIndex], entity);
 
             //show the distance to object
-            alert("distance to object is " + calcCrow(userPostion.latitude, userPostion.longitude, objectPostion.lat, objectPostion.lng) + " KM")
+            alert("distance to to Sunny Hill bird is " + calcCrow(userPostion.latitude, userPostion.longitude, objectPostion.lat, objectPostion.lng) + " KM")
         });
 
         scene.appendChild(model);

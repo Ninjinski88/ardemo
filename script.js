@@ -3,6 +3,10 @@ var userPostion = {
     longitude: null
 };
 
+var objectPostion = {
+    lat:  51.5589912,
+    lng: -0.2104431
+};
 
 window.onload = () => {
     const button = document.querySelector('button[data-action="change"]');
@@ -12,13 +16,6 @@ window.onload = () => {
     let places = staticLoadPlaces();
     renderPlaces(places);
     
-};
-
-
-
-var objectPostion = {
-    lat:  51.5589912,
-    lng: -0.2104431
 };
 
 
@@ -43,10 +40,7 @@ function getLocation() {
 
 function showPosition(position) {
     userPostion.latitude = position.coords.latitude;
-    userPostion.longitude = position.coords.longitude;;
-  postion = "Latitude: " + userPostion.latitude + 
-  "Longitude: " + userPostion.longitude;
-  // alert(postion)
+    userPostion.longitude = position.coords.longitude;
 }
 
 ///CALCULATE THE DISTANCE BETWEEN THE USER AND THE OBJECT
@@ -75,23 +69,11 @@ function showPosition(position) {
 
 var models = [
     {
-        url: './assets/magnemite/scene.gltf',
-        scale: '0.5 0.5 0.5',
-        info: 'Magnemite, Lv. 5, HP 10/10',
-        rotation: '0 180 0',
-    },
-    {
         url: './assets/articuno/scene.gltf',
         scale: '0.2 0.2 0.2',
         rotation: '0 180 0',
         info: 'Articuno, Lv. 80, HP 100/100',
-    },
-    {
-        url: './assets/dragonite/scene.gltf',
-        scale: '0.08 0.08 0.08',
-        rotation: '0 180 0',
-        info: 'Dragonite, Lv. 99, HP 150/150',
-    },
+     }
 ];
 
 var modelIndex = 0;
@@ -133,6 +115,8 @@ function renderPlaces(places) {
             modelIndex++;
             var newIndex = modelIndex % models.length;
             setModel(models[newIndex], entity);
+
+            //show the distance to object
             alert("distance to object is " + calcCrow(userPostion.latitude, userPostion.longitude, objectPostion.lat, objectPostion.lng) + " KM")
         });
 

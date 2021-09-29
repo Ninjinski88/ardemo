@@ -1,22 +1,77 @@
+var userPostion = {
+    latitude:  null,
+    longitude: null
+};
+
+
 window.onload = () => {
     const button = document.querySelector('button[data-action="change"]');
     button.innerText = '﹖';
 
+    getLocation();
     let places = staticLoadPlaces();
     renderPlaces(places);
+    
 };
 
+
+
+var objectPostion = {
+    lat:  51.5589912,
+    lng: -0.2104431
+};
+
+
 function staticLoadPlaces() {
+    //location of the object
     return [
         {
             name: 'Pokèmon',
-            location: {
-                lat: 51.5589912,
-                lng: -0.2104431,
-            },
+            location: objectPostion
         },
     ];
 }
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    err = "Geolocation is not supported by this browser.";
+    alert(err);
+  }
+}
+
+function showPosition(position) {
+    userPostion.latitude = position.coords.latitude;
+    userPostion.longitude = position.coords.longitude;;
+  postion = "Latitude: " + userPostion.latitude + 
+  "Longitude: " + userPostion.longitude;
+  // alert(postion)
+}
+
+///CALCULATE THE DISTANCE BETWEEN THE USER AND THE OBJECT
+//This function takes in latitude and longitude of two location and returns the distance between them as the crow flies (in km)
+    function calcCrow(lat1, lon1, lat2, lon2){
+      var R = 6371; // km
+      var dLat = toRad(lat2-lat1);
+      var dLon = toRad(lon2-lon1);
+      var lat1 = toRad(lat1);
+      var lat2 = toRad(lat2);
+
+      var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+      var d = R * c;
+      return d;
+    }
+
+    // Converts numeric degrees to radians
+    function toRad(Value) 
+    {
+        return Value * Math.PI / 180;
+    }
+
+///-------------------
 
 var models = [
     {
@@ -78,6 +133,7 @@ function renderPlaces(places) {
             modelIndex++;
             var newIndex = modelIndex % models.length;
             setModel(models[newIndex], entity);
+            alert("distance to object is " + calcCrow(userPostion.latitude, userPostion.longitude, objectPostion.lat, objectPostion.lng) + " KM")
         });
 
         scene.appendChild(model);

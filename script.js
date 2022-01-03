@@ -10,7 +10,7 @@ var objectPostion = {
 
 window.onload = () => {
     const button = document.querySelector('button[data-action="change"]');
-    button.innerText = '﹖';
+    button.innerText = '!';
 
     getLocation();
     let places = staticLoadPlaces();

@@ -4,11 +4,8 @@ var userPostion = {
 };
 
 var objectPostion = {
-    //yem 
-    //lat:  51.5778478
-    //long: -0.2431372
-    lat:  51.5778478,//51.5966848,
-    lng: -0.2431372,//-0.2268827,
+    lat:  51.5778478,
+    lng: -0.2431372,
 };
 
 window.onload = () => {

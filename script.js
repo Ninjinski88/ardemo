@@ -74,7 +74,7 @@ var models = [
     {
         url: './assets/articuno/scene.gltf',
         scale: '0.2 0.2 0.2',
-        rotation: '0 180 0',
+        rotation: '0 90 0',
         info: 'Sunny hill bird',
      }
 ];

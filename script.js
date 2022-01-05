@@ -4,8 +4,11 @@ var userPostion = {
 };
 
 var objectPostion = {
-    lat:  51.5966848,//51.5589912,
-    lng: -0.2268827,//,-0.2104431
+    //yem 
+    //lat:  51.5779059
+    //long: -0.2432063
+    lat:  51.5779059,//51.5966848,
+    lng: -0.2432063,//-0.2268827,
 };
 
 window.onload = () => {
@@ -44,7 +47,7 @@ function showPosition(position) {
 }
 
 ///CALCULATE THE DISTANCE BETWEEN THE USER AND THE OBJECT
-//This function takes in latitude and longitude of two location and returns the distance between them as the crow flies (in km)
+//This function takes in latitude and longitude of two location and returns the shortest distance between them(in km)
     function calcCrow(lat1, lon1, lat2, lon2){
       var R = 6371; // km
       var dLat = toRad(lat2-lat1);

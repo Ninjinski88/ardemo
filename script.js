@@ -8,7 +8,7 @@ var objectPostion = {
     //lat:  51.5778478
     //long: -0.2431372
     lat:  51.5984434,
-    lng: -0.2300759,
+    lng: -0.2300759, 
 };
 
 window.onload = () => {
